@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return
             }
 
-            if (tabs[0].url.indexOf("coursera.org/course") != -1)
+            if (tabs[0].url.indexOf("coursera.org/course/") != -1)
             {
                 alert("This is course page");
                 return
