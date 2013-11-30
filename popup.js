@@ -80,7 +80,25 @@ var kittenGenerator = {
 // Run our kitten generation script as soon as the document's DOM is ready.
 document.addEventListener('DOMContentLoaded', function () {
 
+    //asking our server to check our target
+    $.get( "http://griev.ru:6543/check_target", function( data ) {
+        /*
+        if (data == "false")
+        {   //fill form
+            alert("Here we should fill the form");
+        }
+        else
+        {   //check JSON answer
+            alert("Here we decode JSON answer");
+        }
+        */
+        //$( ".result" ).html( data );
+        alert( "Load was performed." );
+    });
+
+
   //kittenGenerator.requestKittens();
+    /*
     chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT},
         function(tabs){
 
@@ -99,5 +117,6 @@ document.addEventListener('DOMContentLoaded', function () {
             alert(tabs[0].url);
         }
     );
+    */
 
 });
