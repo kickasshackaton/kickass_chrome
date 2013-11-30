@@ -109,11 +109,12 @@ document.addEventListener('DOMContentLoaded', function () {
                  //get list of friends to witness
                  $.get( "http://griev.ru:6543/list_users", function( data ) {
                      //$( ".result" ).html( data );
-                     data.user_list.forEach(function(element, index) {
-                         //work with each friend name
+                     data.user_list.forEach(function(element, index){
+                         //fill select field of friends
+                         $("#users").append($("<option />").val(element.id).text(element.name));
                          console.log(element);
                      });
-                     alert( "Load was performed." );
+                     //alert( "Load was performed." );
                  });
 
                  //choose fund to send money to
@@ -121,9 +122,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
                      $.each( data, function( key, value ) {
-                         console.log( key + ": " + value );
+                         $("#charities").append($("<option />").val(key).text(value));
+                         //console.log( key + ": " + value );
                      });
-                     //$( ".result" ).html( data );
+
                      //alert( "Load was performed." );
                  });
 
