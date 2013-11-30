@@ -80,43 +80,61 @@ var kittenGenerator = {
 // Run our kitten generation script as soon as the document's DOM is ready.
 document.addEventListener('DOMContentLoaded', function () {
 
-    //asking our server to check our target
-    $.get( "http://griev.ru:6543/check_target", function( data ) {
-        /*
-        if (data == "false")
-        {   //fill form
-            alert("Here we should fill the form");
-        }
-        else
-        {   //check JSON answer
-            alert("Here we decode JSON answer");
-        }
-        */
-        //$( ".result" ).html( data );
-        alert( "Load was performed." );
-    });
+
+     chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT},
+     function(tabs){
+         var url_for_request;    //current tab url (where we clicked plugin button)
+
+         url_for_request = tabs[0].url;       //save current tab url
+
+     if (tabs[0].url.indexOf("class.coursera.org") != -1)
+     {
+     //alert("This is class page");
+     //return
+     }
+
+     else if (tabs[0].url.indexOf("coursera.org/course/") != -1)
+     {
+     //alert("This is course page");
+     //return
+     }
+
+     //asking our server to check our target
+     $.get( "http://griev.ru:6543/check_target?url="+ url_for_request +"&user_id=1", function( data ) {
+
+         if (data.result == false)
+         {   //fill form
+             if (data.enrolled == true)     //if user already study this course
+             {
+                 alert ("Fill up the form");
+             }
+             else
+              {
+                alert("Please, enroll")
+              }
+             //alert("Here we should fill the form");
+         }
+         else
+         {   //check JSON answer
+             //alert("Here we decode JSON answer: " + data.target.JSON.toString());
+             console.log(data);
+         }
+         //$( ".result" ).html( data );
+         //alert( "Load was performed." );
+         //alert(data.result);
+     });
+
+     //alert(tabs[0].url);
+     //alert( url_for_request );
+     }
+     );
+
+
+
+
 
 
   //kittenGenerator.requestKittens();
-    /*
-    chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT},
-        function(tabs){
 
-            if (tabs[0].url.indexOf("class.coursera.org") != -1)
-            {
-                alert("This is class page");
-                return
-            }
-
-            if (tabs[0].url.indexOf("coursera.org/course/") != -1)
-            {
-                alert("This is course page");
-                return
-            }
-
-            alert(tabs[0].url);
-        }
-    );
-    */
 
 });
