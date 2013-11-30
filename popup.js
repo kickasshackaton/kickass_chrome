@@ -106,17 +106,26 @@ document.addEventListener('DOMContentLoaded', function () {
          {   //fill form
              if (data.enrolled == true)     //if user already study this course
              {
-
-                 $.get( "ajax/test.html", function( data ) {
-                     $( ".result" ).html( data );
+                 //get list of friends to witness
+                 $.get( "http://griev.ru:6543/list_users", function( data ) {
+                     //$( ".result" ).html( data );
+                     data.user_list.forEach(function(element, index){
+                         //work with each friend name
+                         console.log(element);
+                     });
                      alert( "Load was performed." );
                  });
 
-                 $.get( "ajax/test.html", function( data ) {
-                     $( ".result" ).html( data );
-                     alert( "Load was performed." );
-                 });
+                 //choose fund to send money to
+                 $.get( "http://griev.ru:6543/get_charity_funds", function( data ) {
 
+
+                     $.each( data, function( key, value ) {
+                         console.log( key + ": " + value );
+                     });
+                     //$( ".result" ).html( data );
+                     //alert( "Load was performed." );
+                 });
 
                  //alert ("Fill up the form");
              }
