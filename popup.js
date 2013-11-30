@@ -106,7 +106,19 @@ document.addEventListener('DOMContentLoaded', function () {
          {   //fill form
              if (data.enrolled == true)     //if user already study this course
              {
-                 alert ("Fill up the form");
+
+                 $.get( "ajax/test.html", function( data ) {
+                     $( ".result" ).html( data );
+                     alert( "Load was performed." );
+                 });
+
+                 $.get( "ajax/test.html", function( data ) {
+                     $( ".result" ).html( data );
+                     alert( "Load was performed." );
+                 });
+
+
+                 //alert ("Fill up the form");
              }
              else
               {
