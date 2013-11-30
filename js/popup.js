@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
                  //get list of friends to witness
                  $.get( "http://griev.ru:6543/list_users", function( data ) {
                      //$( ".result" ).html( data );
-                     data.user_list.forEach(function(element, index){
+                     data.user_list.forEach(function(element, index) {
                          //work with each friend name
                          console.log(element);
                      });

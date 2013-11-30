@@ -1,40 +1,31 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Getting Started Extension's Popup</title>
-    <style>
-      body {
-        min-width: 357px;
-        overflow-x: hidden;
-      }
+	<head>
+	    <meta charset="utf-8">
+		<meta name="description" content="A basic template for a Chrome Extension using Twitter Bootstrap 3">
+		<meta name="author" content="Elliot Hesp">
+		
+		<title>Chrome Extension with Twitter Bootstrap 3.0</title>
+		
+		<!-- Scripts -->
+		<script src="js/jquery-2.0.3.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+        <script src="js/popup.js"></script>
+		
+		<!-- Cascading Style Sheets -->
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="css/custom.css" rel="stylesheet" media="screen">		
+	</head>
+	
+	<body>
 
-      img {
-        margin: 5px;
-        border: 2px solid black;
-        vertical-align: middle;
-        width: 75px;
-        height: 75px;
-      }
+        <button type="button" class="btn btn-default">Default</button>
 
-      .container {
-        margin:0 auto;
-      }
-    </style>
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
-     -->
-    <script src="popup.js"></script>
-    <script src="jquery-1.10.2.min.js"></script>
-  </head>
-  <body>
-    <div class="container">
-        <button>ADD THIS SHIT</button>
+        <select id="users">
+        </select>
 
-    </div>
-  </body>
+        <select id="charities">
+        </select>
+		
+	</body>
 </html>
-
