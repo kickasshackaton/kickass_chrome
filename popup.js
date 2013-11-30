@@ -79,5 +79,25 @@ var kittenGenerator = {
 
 // Run our kitten generation script as soon as the document's DOM is ready.
 document.addEventListener('DOMContentLoaded', function () {
+
   //kittenGenerator.requestKittens();
+    chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT},
+        function(tabs){
+
+            if (tabs[0].url.indexOf("class.coursera.org") != -1)
+            {
+                alert("This is class page");
+                return
+            }
+
+            if (tabs[0].url.indexOf("coursera.org/course") != -1)
+            {
+                alert("This is course page");
+                return
+            }
+
+            alert(tabs[0].url);
+        }
+    );
+
 });
