@@ -157,7 +157,13 @@ document.addEventListener('DOMContentLoaded', function () {
          $("#addTargetButton").click( function()
              {
                  //some fields are constants, other we get from select in a form
-                 $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $("#users").val() , bid: $("#bid").text() , name: "", url: url_for_request, type: pagetype, charity_type: $("#charities").val() } );
+                 if (pagetype == "coursera_course" )    {
+                    $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $("#users").val() , bid: $("#bid").text() , url: url_for_request, type: pagetype, charity_type: $("#charities").val() } );
+                 }
+                 else   {
+                    var expiretime;         //users deadline time to finish jis task
+                    $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $("#users").val() , bid: $("#bid").text() , url: url_for_request, type: pagetype, charity_type: $("#charities").val(), name: $("#name"), deadline: expiretime } );
+                 }
                  //alert('button clicked');
              }
          );
