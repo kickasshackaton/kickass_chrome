@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
            if (data.result == false)
            {   //fill form
+
              if(pagetype == "coursera_course") {
                if (data.enrolled == true)     //if user already study this course
                {
@@ -48,8 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   alert("Please, enroll")
                }
              } else {
-               $("#add-custom-form").show();
-               $("#add-coursera-form").hide();
+               $("#add_coursera_form").css( "display", "none");
              }
            }
            else
