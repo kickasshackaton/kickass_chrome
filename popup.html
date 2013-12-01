@@ -19,13 +19,93 @@
 	
 	<body>
 
-        <button type="button" class="btn btn-default">Default</button>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Kick Ass</a>
+        </div>
+    </nav>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Coursera</a></li>
+            <li><a href="#">Read It</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Eliah Nikans</a></li>
+            <li><a href="#">Sign out</a></li>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+
+    <div id="add_coursera_form">
+        <form class="form-inline" role="form">
+            <div>
+                I pledge
+                $ <input type="text" class="form-control"  id="bid" placeholder="100">
+                which is substantial for me
+            </div>
+            <div>
+                to pass this course
+            </div>
+            <div>
+                or else shall my money go to
+                <select class="form-control" id="charities">
+                </select>
+            </div>
+            <div>
+                Let my friend
+                <select class="form-control" id="users">
+                    <option value="0">No friend</option>
+                </select>
+                witness!
+            </div>
+        </form>
+
+        <br/><button id="addTargetButton" type="submit" class="btn btn-default">Submit</button>
+    </div>
+
+    <div id="add_custom_form" style="display:none">
+        <form class="form-inline" role="form">
+            <div>
+                I pledge
+                $ <input type="text" class="form-control" id="bid" placeholder="100">
+                which is substantial for me
+            </div>
+            <div>
+                to pass this course AAA A AAA ASD
+            </div>
+            <div>
+                or else shall my money go to
+                <select class="form-control" id="charities">
+                </select>
+            </div>
+            <div>
+                Let my friend
+                <select class="form-control" id="users">
+                    <option value="0">No friend</option>
+                </select>
+                witness!
+            </div>
+        </form>
+
+        <br/><button id="addTargetButton" type="submit" class="btn btn-default">Submit</button>
+    </div>
+        <!--<button type="button" class="btn btn-default">Default</button>
 
         <select id="users">
         </select>
 
         <select id="charities">
-        </select>
-		
+        </select>-->
+    <div style="display:none;" id="loading">
+        <img style="position:absolute;left:48%;top:48%;" src="img/pacman.gif"/>
+    </div>
 	</body>
 </html>
