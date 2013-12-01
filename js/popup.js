@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
            else
            {   //check JSON answer
                //alert("Here we decode JSON answer: " + data.target.JSON.toString());
-               console.log(data);
+
            }
        });
 
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
            {
                //some fields are constants, other we get from select in a form
                if (pagetype == "coursera_course" )    {
-                  $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $("#users").val() , bid: $("#bid").text() , url: url_for_request, type: pagetype, charity_type: $("#charities").val() } );
+                  $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $("#users").val() , bid: $("#bid_crs").val() , url: url_for_request, type: pagetype, charity_type: $("#charities").val() } );
                }
                else   {
                   var expiretime;  //users deadline time to finish jis task
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   var pname = tabs[0].title;
 
                   expiretime = Math.round(new Date().getTime()/1000) + 60*60*24*daysleft;          //user is notified when 1, 3, 5 or 7 days left
-                  $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $("#users").val() , bid: $("#bid").text() , url: url_for_request, type: pagetype, charity_type: $("#charities").val(), name: pname, deadline: expiretime } );
+                  $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $("#users").val() , bid: $("#bid_cst").val() , url: url_for_request, type: pagetype, charity_type: $("#charities").val(), name: pname, deadline: expiretime } );
                }
            }
        );
