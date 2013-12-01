@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
                        });
                    });
                } else {
-                  alert("Please, enroll")
+                   $(".load").html("<div style='margin:80px 30px 30px 30px;' class=\"alert alert-danger\"><h2>Sorry</h2>You must enroll in this course first.</br><br/><a class=\"btn btn-default\" href=\"\">Check again</a></div>");
                }
              } else {
                $(".crs").hide();
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
                  var month = now.getMonth() + 1;
                  $("#crs-target-deadline").text(month + "/" + now.getDay() + "/" + now.getFullYear());
                } else {
-
+                 alert("Added another type not coursera");
                }
            }
        });
@@ -123,17 +123,17 @@ document.addEventListener('DOMContentLoaded', function () {
            {
                //some fields are constants, other we get from select in a form
                if (pagetype == "coursera_course" )    {
-                  $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $("#users").val() , bid: $("#bid_crs").val() , url: url_for_request, type: pagetype, charity_type: $("#charities").val() } );
+                  $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $("#users_crs").val() , bid: $("#bid_crs").val() , url: url_for_request, type: pagetype, charity_type: $("#charities_crs").val() } );
                }
                else   {
                   var expiretime;  //users deadline time to finish jis task
                   var daysleft;     // 1,3,5 or 7 days
-                  daysleft =  $("#deadline").val();
+                  daysleft = $('input[type="radio"]:checked').val();
 
                   var pname = tabs[0].title;
 
                   expiretime = Math.round(new Date().getTime()/1000) + 60*60*24*daysleft;          //user is notified when 1, 3, 5 or 7 days left
-                  $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $("#users").val() , bid: $("#bid_cst").val() , url: url_for_request, type: pagetype, charity_type: $("#charities").val(), name: pname, deadline: expiretime } );
+                  $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $("#users_cst").val() , bid: $("#bid_cst").val() , url: url_for_request, type: pagetype, charity_type: $("#charities_cst").val(), name: pname, deadline: expiretime } );
                }
            }
        );
