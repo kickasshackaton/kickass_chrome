@@ -1,10 +1,19 @@
 document.addEventListener('DOMContentLoaded', function () {
+   var loadedUsers = false;
+   var loadedCharities = false;
+
+  $(".load").show();
+  $(".cst").hide();
+  $(".crs").hide();
+
    chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT},
    function(tabs){
        var url_for_request;    //current tab url (where we clicked plugin button)
 
        var pagetype = "omni";     //depends on the page we are located at, is coursera we use "coursera_course"
        url_for_request = tabs[0].url;       //save current tab url
+
+       $(".thispage").val(url_for_request);
 
        if (tabs[0].url.indexOf("class.coursera.org") != -1)
        {
@@ -25,14 +34,19 @@ document.addEventListener('DOMContentLoaded', function () {
              if(pagetype == "coursera_course") {
                if (data.enrolled == true)     //if user already study this course
                {
-                   $("#add-custom-form").hide();
-                   $("#add-coursera-form").show();
+                   $(".cst").hide();
+                   $(".crs").show();
                    //get list of friends to witness
                    $.get( "http://griev.ru:6543/list_users", function( data ) {
                        data.user_list.forEach(function(element, index){
                            //fill select field of friends
                            $("#users").append($("<option />").val(element.id).text(element.name));
                        });
+                       loadedUsers = true;
+                       if(loadedCharities && loadedUsers) {
+                         $(".crs").show();
+                         $(".load").hide();
+                       }
                    });
 
                    //choose fund to send money to
@@ -43,13 +57,46 @@ document.addEventListener('DOMContentLoaded', function () {
                            value.forEach(function(element, index){
                                $("#charities").append($("<option />").val(element).text(element));
                            });
+                         loadedCharities = true;
+                         if(loadedCharities && loadedUsers) {
+                           $(".crs").show();
+                           $(".load").hide();
+                         }
                        });
                    });
                } else {
                   alert("Please, enroll")
                }
              } else {
-               $("#add_coursera_form").css( "display", "none");
+               $(".crs").hide();
+               //get list of friends to witness
+               $.get( "http://griev.ru:6543/list_users", function( data ) {
+                 data.user_list.forEach(function(element, index){
+                   //fill select field of friends
+                   $("#users_cst").append($("<option />").val(element.id).text(element.name));
+                 });
+                 loadedUsers = true;
+                 if(loadedCharities && loadedUsers) {
+                   $(".cst").show();
+                   $(".load").hide();
+                 }
+               });
+
+               //choose fund to send money to
+               $.get( "http://griev.ru:6543/get_charity_funds", function( data ) {
+
+
+                 $.each( data, function( key, value ) {
+                   value.forEach(function(element, index){
+                     $("#charities_cst").append($("<option />").val(element).text(element));
+                   });
+                   loadedCharities = true;
+                   if(loadedCharities && loadedUsers) {
+                     $(".cst").show();
+                     $(".load").hide();
+                   }
+                 });
+               });
              }
            }
            else
