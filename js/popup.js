@@ -68,7 +68,10 @@ document.addEventListener('DOMContentLoaded', function () {
                }
                else   {
                   var expiretime;  //users deadline time to finish jis task
-                  expiretime = Math.round(new Date().getTime()/1000) + 60*60*24*( $("#deadline").val());          //user is notified when 1, 3, 5 or 7 days left
+                  var daysleft;     // 1,3,5 or 7 days
+                  daysleft =  $("#deadline").val();
+
+                  expiretime = Math.round(new Date().getTime()/1000) + 60*60*24*daysleft;          //user is notified when 1, 3, 5 or 7 days left
                   $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $("#users").val() , bid: $("#bid").text() , url: url_for_request, type: pagetype, charity_type: $("#charities").val(), name: $("#name"), deadline: expiretime } );
                }
            }
