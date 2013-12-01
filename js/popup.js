@@ -118,8 +118,10 @@ document.addEventListener('DOMContentLoaded', function () {
                   var daysleft;     // 1,3,5 or 7 days
                   daysleft =  $("#deadline").val();
 
+                  var pname = tabs[0].title;
+
                   expiretime = Math.round(new Date().getTime()/1000) + 60*60*24*daysleft;          //user is notified when 1, 3, 5 or 7 days left
-                  $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $("#users").val() , bid: $("#bid").text() , url: url_for_request, type: pagetype, charity_type: $("#charities").val(), name: $("#name"), deadline: expiretime } );
+                  $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $("#users").val() , bid: $("#bid").text() , url: url_for_request, type: pagetype, charity_type: $("#charities").val(), name: pname, deadline: expiretime } );
                }
            }
        );
