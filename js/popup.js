@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
    var loadedUsers = false;
    var loadedCharities = false;
 
+  $("#bid_crs").focus();
+
   $(".load").show();
   $(".cst").hide();
   $(".crs").hide();
@@ -102,7 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
            else
            {   //check JSON answer
                //alert("Here we decode JSON answer: " + data.target.JSON.toString());
-               if(data.target.type == "coursera_course") {
                  $(".crs-target").show();
                  $(".load").hide();
 
@@ -112,9 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
                  var now = new Date(data.target.deadline * 1000);
                  var month = now.getMonth() + 1;
                  $("#crs-target-deadline").text(month + "/" + now.getDay() + "/" + now.getFullYear());
-               } else {
-                 alert("Added another type not coursera");
-               }
+
            }
        });
 
