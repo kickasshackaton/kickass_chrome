@@ -102,7 +102,19 @@ document.addEventListener('DOMContentLoaded', function () {
            else
            {   //check JSON answer
                //alert("Here we decode JSON answer: " + data.target.JSON.toString());
+               if(data.target.type == "coursera_course") {
+                 $(".crs-target").show();
+                 $(".load").hide();
 
+                 $("#crs-target-title").text(data.target.name);
+                 $("#crs-target-bid").text("$" + data.target.bid);
+
+                 var now = new Date(data.target.deadline * 1000);
+                 var month = now.getMonth() + 1;
+                 $("#crs-target-deadline").text(month + "/" + now.getDay() + "/" + now.getFullYear());
+               } else {
+
+               }
            }
        });
 

@@ -45,8 +45,8 @@
         </ul>
     </div><!-- /.navbar-collapse -->
 
-    <div class='coursera-url' style="display:none;padding:20px;">
-            <h3><a style="position:relative;top:-2px;" class="bid btn btn-success">$50</a> Second course which is incredibly long and things like that</h3>
+    <div class='crs-target' style="display:none;padding:20px;">
+            <h3><a id="crs-target-bid" style="position:relative;top:-2px;" class="bid btn btn-success"></a> <span id="crs-target-title"></span></h3>
         <div class="progress">
             <div class="progress-bar progress-bar-success" style="width:30%">
                 <span class="sr-only"></span>
@@ -55,7 +55,7 @@
                 <span class="sr-only"></span>
             </div>
         </div>
-        <div class="deadline pull-right">03/02/13</div>
+        <div id="crs-target-deadline" class="deadline pull-right"></div>
         <div class="time-left">3 weeks 4 hours left</div>
         <div style="margin-top:10px;"> <img style="position:relative;top:-1px;width:25px" src="img/userpic-small.png" /> Eliah Nikans</div>
     </div>
@@ -87,36 +87,40 @@
         <br/><button id="addTargetButton" type="submit" class="btn btn-default">Submit</button>
     </div>
 
-    <div class="cst" id="add_custom_form" style="display:none">
-        <form class="form-inline" role="form" id="newReaditCommitmentForm" method="POST" action="/add_target">
+    <div class="cst" id="add_custom_form" style="padding:20px;display:none">
+        <form class="form-inline new-target-modal-form" role="form" id="newReaditCommitmentForm" method="POST" action="/add_target">
             <div>
                 I pledge
-                $ <input type="text" class="form-control" name="bid"  id="bid_cst" placeholder="100">
+                $ <input type="text" class="form-control" name="bid"  id="bid_cst" placeholder="100"> to thoroughly look through
             </div>
             <div>
-                to look through
-                <input type="text" class="form-control thispage" name="url" id="url" disabled /> thoroughly
+
+                <input type="text" class="form-control thispage" name="url"  id="url"/>
             </div>
-            <div>
+            <br/>
+            <div style="text-align:center;">
                 in
-                <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-primary">
+                <div class="btn-group btn-group-lg" data-toggle="buttons" style="margin:0 7px 4px 7px;">
+                    <label class="btn btn-default">
                         <input type="radio" name="options" value="1" id="option1">1
                     </label>
-                    <label class="btn btn-primary">
+                    <label class="btn btn-default">
                         <input type="radio" name="options" value="3" id="option2">3
                     </label>
-                    <label class="btn btn-primary">
+                    <label class="btn btn-default">
                         <input type="radio" name="options" value="5" id="option3">5
                     </label>
-                    <label class="btn btn-primary">
+                    <label class="btn btn-default">
                         <input type="radio" name="options" value="7" id="option3">7
                     </label>
                 </div>
                 days
             </div>
+            <br/>
             <div>
+                or else shall my money go to
                 <select class="form-control" name="charity_type" id="charities_cst">
+
                 </select>
             </div>
             <div>
