@@ -31,19 +31,16 @@
             </button>
             <a class="navbar-brand" href="#"><img style='width:150px;' src='img/logo.png'/></a>
         </div>
-    </nav>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Coursera</a></li>
-            <li><a href="#">Read It</a></li>
-        </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Eliah Nikans</a></li>
             <li><a href="#">Sign out</a></li>
         </ul>
     </div><!-- /.navbar-collapse -->
+
+    </nav>
 
     <div class='crs-target' style="display:none;padding:20px;">
             <h3><a id="crs-target-bid" style="position:relative;top:-2px;" class="bid btn btn-success"></a> <span id="crs-target-title"></span></h3>
@@ -60,15 +57,15 @@
         <div style="margin-top:10px;"> <img style="position:relative;top:-1px;width:25px" src="img/userpic-small.png" /> Eliah Nikans</div>
     </div>
 
-    <div class="crs" id="add_coursera_form">
+    <div class="crs" id="add_coursera_form" style="padding:20px;">
         <form class="form-inline" role="form">
             <div>
                 I pledge
                 $ <input type="text" class="form-control" id="bid_crs" placeholder="100" autofocus>
-                which is substantial for me
+                which is substantial for me<br/>
             </div>
             <div>
-                to pass this course
+                to pass this course</br>
             </div>
             <div>
                 or else shall my money go to
@@ -76,7 +73,7 @@
                 </select>
             </div>
             <div>
-                Let my friend
+                <br/>Let my friend
                 <select class="form-control" id="users_crs">
                     <option value="0">No friend</option>
                 </select>
@@ -142,8 +139,9 @@
 
         <select id="charities">
         </select>-->
-    <div class="load" style="display:none;" id="loading">
-        <img style="position:absolute;left:48%;top:48%;" src="img/pacman.gif"/>
+    <div class="load" style="text-align:center;width:200px;height:200px;position:absolute;left:150px;top:45%;display:none;" id="loading">
+        <img src="img/pacman.gif"/><br/><br/>
+        <b><span class="loadtext"></span></b>
     </div>
 	</body>
 </html>
