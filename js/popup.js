@@ -109,7 +109,6 @@ document.addEventListener('DOMContentLoaded', function () {
              {
                  //get list of friends to witness
                  $.get( "http://griev.ru:6543/list_users", function( data ) {
-                     //$( ".result" ).html( data );
                      data.user_list.forEach(function(element, index){
                          //fill select field of friends
                          $("#users").append($("<option />").val(element.id).text(element.name));
@@ -158,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
          $("#addTargetButton").click( function()
              {
                  //some fields are constants, other we get from select in a form
-                 $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $(#users).val() , bid: $(#bid).text() , name: "", url: url_for_request, type: pagetype, charity_type: $(#charities).val() } );
+                 $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $("#users").val() , bid: $("#bid").text() , name: "", url: url_for_request, type: pagetype, charity_type: $("#charities").val() } );
                  //alert('button clicked');
              }
          );
