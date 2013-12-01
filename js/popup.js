@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
        });
 
        //to request add_target
-       $("#addTargetButton").click( function()
+       $("#addTargetButton_cst").click( function()
            {
                //some fields are constants, other we get from select in a form
                if (pagetype == "coursera_course" )    {
@@ -137,6 +137,25 @@ document.addEventListener('DOMContentLoaded', function () {
                }
            }
        );
+
+     $("#addTargetButton_crs").click( function()
+         {
+           //some fields are constants, other we get from select in a form
+           if (pagetype == "coursera_course" )    {
+             $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $("#users_crs").val() , bid: $("#bid_crs").val() , url: url_for_request, type: pagetype, charity_type: $("#charities_crs").val() } );
+           }
+           else   {
+             var expiretime;  //users deadline time to finish jis task
+             var daysleft;     // 1,3,5 or 7 days
+             daysleft = $('input[type="radio"]:checked').val();
+
+             var pname = tabs[0].title;
+
+             expiretime = Math.round(new Date().getTime()/1000) + 60*60*24*daysleft;          //user is notified when 1, 3, 5 or 7 days left
+             $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $("#users_cst").val() , bid: $("#bid_cst").val() , url: url_for_request, type: pagetype, charity_type: $("#charities_cst").val(), name: pname, deadline: expiretime } );
+           }
+         }
+     );
 
        }
    );
