@@ -85,19 +85,20 @@ document.addEventListener('DOMContentLoaded', function () {
      function(tabs){
          var url_for_request;    //current tab url (where we clicked plugin button)
 
+         var pagetype = "omni";     //depends on the page we are located at, is coursera we use "coursera_course"
          url_for_request = tabs[0].url;       //save current tab url
 
-     if (tabs[0].url.indexOf("class.coursera.org") != -1)
-     {
-     //alert("This is class page");
-     //return
-     }
+         if (tabs[0].url.indexOf("class.coursera.org") != -1)
+         {
+             pagetype = "coursera_course";
+            //alert("This is class page");
+         }
 
-     else if (tabs[0].url.indexOf("coursera.org/course/") != -1)
-     {
-     //alert("This is course page");
-     //return
-     }
+         else if (tabs[0].url.indexOf("coursera.org/course/") != -1)
+         {
+             pagetype = "coursera_course";
+             //alert("This is course page");
+         }
 
      //asking our server to check our target
      $.get( "http://griev.ru:6543/check_target?url="+ url_for_request +"&user_id=1", function( data ) {
@@ -112,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
                      data.user_list.forEach(function(element, index){
                          //fill select field of friends
                          $("#users").append($("<option />").val(element.id).text(element.name));
-                         console.log(element);
+                         //console.log(element);
                      });
                      //alert( "Load was performed." );
                  });
@@ -122,7 +123,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
                      $.each( data, function( key, value ) {
-                         $("#charities").append($("<option />").val(key).text(value));
+                         value.forEach(function(element, index){
+                             $("#charities").append($("<option />").val(element).text(element));
+                             //console.log(element);
+                         });
+                         //$("#charities").append($("<option />").val(key).text(value));
                          //console.log( key + ": " + value );
                      });
 
@@ -142,13 +147,22 @@ document.addEventListener('DOMContentLoaded', function () {
              //alert("Here we decode JSON answer: " + data.target.JSON.toString());
              console.log(data);
          }
-         //$( ".result" ).html( data );
          //alert( "Load was performed." );
          //alert(data.result);
      });
 
      //alert(tabs[0].url);
      //alert( url_for_request );
+
+         //to request add_target
+         $("#addTargetButton").click( function()
+             {
+                 //some fields are constants, other we get from select in a form
+                 $.post( "http://griev.ru:6543/add_target", { user: "1" , overseer: $(#users).val() , bid: $(#bid).text() , name: "", url: url_for_request, type: pagetype, charity_type: $(#charities).val() } );
+                 //alert('button clicked');
+             }
+         );
+
      }
      );
 
